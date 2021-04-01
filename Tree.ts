@@ -113,6 +113,8 @@ class Tree {
     return 1 + Math.max(this.height(node.left), this.height(node.right));
   }
 
+  //NOTE: use in Binary tree not BST 
+  // need to find the min the left sub treen and the min in the right sub tree and commbare with each others and then compare with the root node vlaue  
   min(root) {
     if (this._isLeaf(root)) return root.value;
     let left = this.min(root.left);
