@@ -107,7 +107,8 @@ class Tree {
   }
 
   height(node) {
-    if (!node) return 0;
+    if (!node) return -1;
+    if (!node.right && !node.left) return 0;
     return 1 + Math.max(this.height(node.left), this.height(node.right));
   }
 }
