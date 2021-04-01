@@ -37,14 +37,29 @@ class Tree {
     }
     return node;
   }
+
+  find(value: string | number) {
+    let current = this.root;
+    while (current !== null) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 const tree = new Tree();
 tree.insert(7);
 tree.insert(4);
 tree.insert(9);
-tree.insert(1)
-tree.insert(6)
-tree.insert(8)
-tree.insert(10)
+tree.insert(1);
+tree.insert(6);
+tree.insert(8);
+
+console.log(tree.find(-1));
 console.log(tree);
