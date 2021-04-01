@@ -114,9 +114,14 @@ class Tree {
   }
 
   min(root) {
+    if (this._isLeaf) return root.value;
     let left = this.min(root.left.value);
     let right = this.min(root.value);
     return Math.min(Math.min(left, right), root.value);
+  }
+
+  private _isLeaf(node) {
+    if (!node.right && !node.left) return true;
   }
 }
 
@@ -133,6 +138,7 @@ tree.traversePostOrder();
 tree.traverseInOrder();
 tree.BreathFirstSearch();
 console.log(tree.height(tree.root));
+console.log(tree.min(tree.root));
 
 console.log(tree.find(-1));
 console.log(tree);
