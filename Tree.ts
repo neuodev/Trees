@@ -112,6 +112,12 @@ class Tree {
     if (!node.right && !node.left) return 0;
     return 1 + Math.max(this.height(node.left), this.height(node.right));
   }
+
+  min(root) {
+    let left = this.min(root.left.value);
+    let right = this.min(root.value);
+    return Math.min(Math.min(left, right), root.value);
+  }
 }
 
 const tree = new Tree();
