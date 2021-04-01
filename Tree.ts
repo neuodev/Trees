@@ -106,6 +106,7 @@ class Tree {
     console.log(array);
   }
 
+  // calc the height using the formula 1 + max(height(R) , height(L))
   height(node) {
     if (!node) return -1;
     if (!node.right && !node.left) return 0;
