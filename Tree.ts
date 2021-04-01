@@ -105,6 +105,11 @@ class Tree {
     }
     console.log(array);
   }
+
+  height(node) {
+    if (!node) return 0;
+    return 1 + Math.max(this.height(node.left), this.height(node.right));
+  }
 }
 
 const tree = new Tree();
@@ -119,6 +124,8 @@ tree.traversePreOrder();
 tree.traversePostOrder();
 tree.traverseInOrder();
 tree.BreathFirstSearch();
+console.log(tree.height(tree.root));
+
 console.log(tree.find(-1));
 console.log(tree);
 
@@ -128,3 +135,7 @@ console.log(tree);
 //        - Pre-order ->  ROOT, LEFT , RIGHT **
 //        - In-order ->    LEFT , ROOT , RIGHT  **
 //        - Post-order ->  LEFT , RIGHT , ROOT **
+
+// DEPTH AND HEIGHT
+// <depth>  is number of edges to reatch given node
+// <height>   is the longest path from the leaf to the node
