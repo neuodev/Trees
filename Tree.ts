@@ -114,9 +114,10 @@ class Tree {
   }
 
   min(root) {
-    if (this._isLeaf) return root.value;
-    let left = this.min(root.left.value);
-    let right = this.min(root.value);
+    if (this._isLeaf(root)) return root.value;
+    let left = this.min(root.left);
+    let right = this.min(root.right);
+
     return Math.min(Math.min(left, right), root.value);
   }
 
