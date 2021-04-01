@@ -79,6 +79,32 @@ class Tree {
     postOrder(node);
     console.log(array);
   }
+  traverseInOrder() {
+    let node = this.root;
+    let array = [];
+    function InOrder(node) {
+      if (!node) return;
+      InOrder(node.left);
+      array.push(node.value);
+      InOrder(node.right);
+    }
+    InOrder(node);
+    console.log(array);
+  }
+
+  BreathFirstSearch() {
+    let array = [];
+    let stack = [];
+    let node = this.root;
+    stack.push(node);
+    while (stack.length !== 0) {
+      let removedNode = stack.pop();
+      array.push(removedNode.value);
+      if (removedNode.left) stack.push(removedNode.left);
+      if (removedNode.right) stack.push(removedNode.right);
+    }
+    console.log(array);
+  }
 }
 
 const tree = new Tree();
@@ -91,6 +117,8 @@ tree.insert(8);
 tree.insert(10);
 tree.traversePreOrder();
 tree.traversePostOrder();
+tree.traverseInOrder();
+tree.BreathFirstSearch();
 console.log(tree.find(-1));
 console.log(tree);
 
