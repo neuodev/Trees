@@ -54,13 +54,18 @@ class Tree {
     return false;
   }
 
-  traversePreOrder(node) {
-    if (!node) return;
-    console.log(node.value);
-    this.traversePreOrder(node.left);
-    this.traversePreOrder(node.right);
+  traversePreOrder() {
+    let node = this.root;
+    let array = [];
+    function preOrder(node) {
+      if (!node) return;
+      array.push(node.value);
+      preOrder(node.left);
+      preOrder(node.right);
+    }
+    preOrder(node);
+    console.log(array);
   }
-  
 }
 
 const tree = new Tree();
@@ -71,7 +76,7 @@ tree.insert(1);
 tree.insert(6);
 tree.insert(8);
 tree.insert(10);
-tree.traversePreOrder(tree.root);
+tree.traversePreOrder();
 console.log(tree.find(-1));
 console.log(tree);
 
