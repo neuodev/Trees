@@ -66,6 +66,19 @@ class Tree {
     preOrder(node);
     console.log(array);
   }
+
+  traversePostOrder() {
+    let node = this.root;
+    let array = [];
+    function postOrder(node) {
+      if (!node) return;
+      postOrder(node.left);
+      postOrder(node.right);
+      array.push(node.value);
+    }
+    postOrder(node);
+    console.log(array);
+  }
 }
 
 const tree = new Tree();
@@ -77,6 +90,7 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 tree.traversePreOrder();
+tree.traversePostOrder();
 console.log(tree.find(-1));
 console.log(tree);
 
