@@ -54,7 +54,12 @@ class Tree {
     return false;
   }
 
-
+  traversePreOrder(node) {
+    if (!node) return;
+    console.log(node.value);
+    this.traversePreOrder(node.left);
+    this.traversePreOrder(node.right);
+  }
   
 }
 
@@ -66,6 +71,7 @@ tree.insert(1);
 tree.insert(6);
 tree.insert(8);
 tree.insert(10);
+tree.traversePreOrder(tree.root);
 console.log(tree.find(-1));
 console.log(tree);
 
