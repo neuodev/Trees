@@ -39,6 +39,8 @@ class Tree {
   }
 
   find(value: string | number) {
+    if (!this.root) return false;
+    if (value == this.root.value) return true;
     let current = this.root;
     while (current !== null) {
       if (value < current.value) {
@@ -51,6 +53,16 @@ class Tree {
     }
     return false;
   }
+
+  DepthFirstSearch() {
+    let array = [];
+    function order(node) {
+      if (!node.right && !node.right) return array.push(node.value);
+      array.push(node.value);
+      order(node);
+    }
+    order(this.root);
+  }
 }
 
 const tree = new Tree();
@@ -60,6 +72,14 @@ tree.insert(9);
 tree.insert(1);
 tree.insert(6);
 tree.insert(8);
-
+tree.insert(10);
+// tree.DepthFirstSearch();
 console.log(tree.find(-1));
 console.log(tree);
+
+// Importants Terms
+//  BREATH FIRST -> level by level
+//  DEPTH FIRST ->
+//        - Pre-order ->  ROOT, LEFT , RIGHT **
+//        - In-order ->    LEFT , ROOT , RIGHT  **
+//        - Post-order ->  LEFT , RIGHT , ROOT **
