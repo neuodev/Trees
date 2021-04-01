@@ -113,14 +113,26 @@ class Tree {
     return 1 + Math.max(this.height(node.left), this.height(node.right));
   }
 
-  //NOTE: use in Binary tree not BST 
-  // need to find the min the left sub treen and the min in the right sub tree and commbare with each others and then compare with the root node vlaue  
+  //NOTE: use in Binary tree not BST
+  // need to find the min the left sub treen and the min in the right sub tree and commbare with each others and then compare with the root node vlaue
   min(root) {
     if (this._isLeaf(root)) return root.value;
     let left = this.min(root.left);
     let right = this.min(root.right);
-
     return Math.min(Math.min(left, right), root.value);
+  }
+
+  equals(tree) {
+    let firstTree = this.root;
+    let secondTree = tree.root;
+    function traversePreOrder(firstTreeRoot, secondTreeRoot) {
+      if (!firstTreeRoot || firstTreeRoot) return;
+      if (firstTreeRoot.value !== secondTreeRoot.value) return false;
+      traversePreOrder(firstTreeRoot.left, secondTreeRoot.left);
+      traversePreOrder(firstTreeRoot.right, secondTreeRoot.right);
+      return true;
+    }
+    traversePreOrder(firstTree, secondTree);
   }
 
   private _isLeaf(node) {
@@ -146,6 +158,9 @@ console.log(tree.min(tree.root));
 console.log(tree.find(-1));
 console.log(tree);
 
+
+
+
 // Importants Terms
 //  BREATH FIRST -> level by level
 //  DEPTH FIRST ->
@@ -156,3 +171,5 @@ console.log(tree);
 // DEPTH AND HEIGHT
 // <depth>  is number of edges to reatch given node
 // <height>   is the longest path from the leaf to the node
+
+
