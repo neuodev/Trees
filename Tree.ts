@@ -142,6 +142,22 @@ class Tree {
     return equals(first, second);
   }
 
+  isBindarySearchTree() {
+    let array = [];
+    function validate(node, min, max) {
+      array.push({ node, min, max });
+      if (node === null) return true;
+      if (node.value < min || node.value > max) return false;
+      return (
+        validate(node.left, min, node.value - 1) &&
+        validate(node.right, node.value - 1, max)
+      );
+    }
+    console.log(array);
+
+    return validate(this.root, -Infinity, Infinity);
+  }
+
   private _isLeaf(node) {
     if (!node.right && !node.left) return true;
   }
@@ -161,6 +177,7 @@ tree.traverseInOrder();
 tree.BreathFirstSearch();
 console.log(tree.height(tree.root));
 console.log(tree.min(tree.root));
+console.log(tree.isBindarySearchTree());
 
 console.log(tree.find(-1));
 console.log(tree);
