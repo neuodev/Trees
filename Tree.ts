@@ -155,13 +155,16 @@ class Tree {
     return validate(this.root, -Infinity, Infinity);
   }
 
-  KDistance(distance: number) {
+  printKDistance(distance: number) {
     function KDistance(distance: number, node) {
-      if (!node) return;
-      if (distance === 0) return console.log(node.value);
+      if (node == null) return;
+      if (distance === 0) {
+        console.log(node.value);
+        return;
+      }
 
-      KDistance(distance--, node.left);
-      KDistance(distance--, node.right);
+      KDistance(distance - 1, node.left);
+      KDistance(distance - 1, node.right);
     }
     KDistance(distance, this.root);
   }
@@ -186,7 +189,7 @@ tree.BreathFirstSearch();
 console.log(tree.height(tree.root));
 console.log(tree.min(tree.root));
 console.log(tree.isBindarySearchTree());
-console.log(tree.KDistance(3));
+console.log(tree.printKDistance(2));
 
 console.log(tree.find(-1));
 console.log(tree);
