@@ -143,9 +143,9 @@ class Tree {
   }
 
   isBindarySearchTree() {
-    let array = [];
+  
     function validate(node, min, max) {
-      array.push({ node, min, max });
+    
       if (node === null) return true;
       if (node.value < min || node.value > max) return false;
       return (
@@ -153,7 +153,7 @@ class Tree {
         validate(node.right, node.value - 1, max)
       );
     }
-    console.log(array);
+
 
     return validate(this.root, -Infinity, Infinity);
   }
