@@ -122,17 +122,22 @@ class Tree {
     return Math.min(Math.min(left, right), root.value);
   }
 
-  equals(tree) {
-    let firstTree = this.root;
-    let secondTree = tree.root;
-    function traversePreOrder(firstTreeRoot, secondTreeRoot) {
-      if (!firstTreeRoot || firstTreeRoot) return;
-      if (firstTreeRoot.value !== secondTreeRoot.value) return false;
-      traversePreOrder(firstTreeRoot.left, secondTreeRoot.left);
-      traversePreOrder(firstTreeRoot.right, secondTreeRoot.right);
-      return true;
+  equals(other) {
+    let first = this.root;
+    let second = other.root;
+    function equals(first, second) {
+      if (first === null && second === null) return true;
+      if (first.value !== null && second.value !== null)
+        return (
+          first.value === second.value &&
+          equals(first.left, second.left) &&
+          equals(first.right, second.right)
+        );
+
+      return false;
     }
-    traversePreOrder(firstTree, secondTree);
+
+    return equals(first, second);
   }
 
   private _isLeaf(node) {
@@ -158,8 +163,16 @@ console.log(tree.min(tree.root));
 console.log(tree.find(-1));
 console.log(tree);
 
+const secondTree = new Tree();
+secondTree.insert(7);
+secondTree.insert(4);
+secondTree.insert(9);
+secondTree.insert(1);
+secondTree.insert(6);
+secondTree.insert(8);
+secondTree.insert(10);
 
-
+console.log(tree.equals(secondTree));
 
 // Importants Terms
 //  BREATH FIRST -> level by level
@@ -171,5 +184,3 @@ console.log(tree);
 // DEPTH AND HEIGHT
 // <depth>  is number of edges to reatch given node
 // <height>   is the longest path from the leaf to the node
-
-
