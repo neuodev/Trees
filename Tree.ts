@@ -122,6 +122,7 @@ class Tree {
     return Math.min(Math.min(left, right), root.value);
   }
 
+  // using pre order traversal 
   equals(other) {
     let first = this.root;
     let second = other.root;
