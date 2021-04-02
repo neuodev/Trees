@@ -6,7 +6,7 @@ methods:
  - traversePreOrder() -> trever the node in Depth first  search  
  - traversePostOrder() -> trever the node in Depth first  search  
  - traverseInorder()-> trever the node in Depth first  search  
- -BreathFirstSearch() -> traverse the tree in Breath first search and print them  
+ - BreathFirstSearch() -> traverse the tree in Breath first search and print them  
  - hieght() -> return the height of the tree  
  - getMin() -> return the smallest value in the tree  
  - equals() -> compare tow trees for equality   
