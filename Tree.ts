@@ -143,9 +143,7 @@ class Tree {
   }
 
   isBindarySearchTree() {
-  
     function validate(node, min, max) {
-    
       if (node === null) return true;
       if (node.value < min || node.value > max) return false;
       return (
@@ -154,8 +152,18 @@ class Tree {
       );
     }
 
-
     return validate(this.root, -Infinity, Infinity);
+  }
+
+  KDistance(distance: number) {
+    function KDistance(distance: number, node) {
+      if (!node) return;
+      if (distance === 0) return console.log(node.value);
+
+      KDistance(distance--, node.left);
+      KDistance(distance--, node.right);
+    }
+    KDistance(distance, this.root);
   }
 
   private _isLeaf(node) {
@@ -178,6 +186,7 @@ tree.BreathFirstSearch();
 console.log(tree.height(tree.root));
 console.log(tree.min(tree.root));
 console.log(tree.isBindarySearchTree());
+console.log(tree.KDistance(3));
 
 console.log(tree.find(-1));
 console.log(tree);
