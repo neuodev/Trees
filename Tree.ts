@@ -156,17 +156,19 @@ class Tree {
   }
 
   printKDistance(distance: number) {
-    function KDistance(distance: number, node) {
+    let arrayList = [];
+    function KDistance(distance: number, node, arrayList: number[]) {
       if (node == null) return;
       if (distance === 0) {
-        console.log(node.value);
+        arrayList.push(node.value);
         return;
       }
 
-      KDistance(distance - 1, node.left);
-      KDistance(distance - 1, node.right);
+      KDistance(distance - 1, node.left, arrayList);
+      KDistance(distance - 1, node.right, arrayList);
     }
-    KDistance(distance, this.root);
+    KDistance(distance, this.root, arrayList);
+    console.log(arrayList);
   }
 
   private _isLeaf(node) {
